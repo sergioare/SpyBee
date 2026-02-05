@@ -45,7 +45,6 @@ export const Typography = (props: TypographyProps) => {
     "--selected-color": color || colors.primary[500],
   } as React.CSSProperties
 
-  console.log(CssVariables)
   return (
     <span style={CssVariables} className={`lib ${className}`}>
       {variants[variant]}
