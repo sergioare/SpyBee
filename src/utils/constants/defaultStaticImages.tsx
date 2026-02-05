@@ -13,4 +13,14 @@ const DEFAULT_BEE_LOGO = {
   alt: "SpyBee logo",
 };
 
-export { DEFAULT_BLACK_LOGO, DEFAULT_WHITE_LOGO, DEFAULT_BEE_LOGO };
+const DEFAULT_AVATAR = {
+  image: "/avatar.svg",
+  alt: "SpyBee logo",
+};
+
+export {
+  DEFAULT_BLACK_LOGO,
+  DEFAULT_WHITE_LOGO,
+  DEFAULT_BEE_LOGO,
+  DEFAULT_AVATAR,
+};

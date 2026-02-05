@@ -1,18 +1,29 @@
 "use client";
+
 import { theme } from "@/utils/ThemeProvider";
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
 import HeaderStyles from "./header.styles";
-import { DEFAULT_WHITE_LOGO } from "@/utils/constants/defaultStaticImages";
+import ArrowDown from "@mui/icons-material/KeyboardArrowDownOutlined";
+import {
+  DEFAULT_AVATAR,
+  DEFAULT_WHITE_LOGO,
+} from "@/utils/constants/defaultStaticImages";
+import { useAppContext } from "@/context/appContext";
 
 const { colors } = theme;
 
 const HeaderComponent = () => {
-  const [openModal, setOpenModal] = useState(false);
+  const { user } = useAppContext();
 
-  const handleClose = () => {
-    setOpenModal((prevState) => !prevState);
+  const roleName = () => {
+    if (!user) return null;
+    switch (user.role) {
+      case "admin":
+        return "Administrador";
+      default:
+        return "Usuario";
+    }
   };
 
   return (
@@ -21,16 +32,36 @@ const HeaderComponent = () => {
         <nav className="navbar__content">
           <div className="navbar__icon">
             <Link href="/dashboard" passHref>
-                <Image
-                  src={DEFAULT_WHITE_LOGO.image}
-                  alt={DEFAULT_WHITE_LOGO.alt}
-                  width={102}
-                  height={32}
-                />
+              <Image
+                src={DEFAULT_WHITE_LOGO.image}
+                alt={DEFAULT_WHITE_LOGO.alt}
+                width={120}
+                height={56}
+              />
             </Link>
           </div>
 
-          <div className="navbar__right"></div>
+          <div className="navbar__right">
+            <Image
+              src={DEFAULT_AVATAR.image}
+              alt={DEFAULT_AVATAR.alt}
+              width={40}
+              height={40}
+            />
+            <div className="navbar__right__menu">
+              <div className="navbar__right__menu--user">
+                <p> {user?.username} </p>
+                <p>{roleName()}</p>
+              </div>
+              <ArrowDown
+                style={{
+                  color: colors.primary[100],
+                  width: 30,
+                  height: 30,
+                }}
+              />
+            </div>
+          </div>
         </nav>
       </header>
 
@@ -38,4 +69,5 @@ const HeaderComponent = () => {
     </>
   );
 };
+
 export default HeaderComponent;

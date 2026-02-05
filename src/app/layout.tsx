@@ -29,7 +29,6 @@ export default function RootLayout({
         />
       </Head>
       <body>
-        {" "}
         <ContextProvider>
           <LayoutWrapper LayoutComponent={DefaultLayout}>
             {children}
