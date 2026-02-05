@@ -33,6 +33,14 @@ const colors = {
     warning: '#DDAD00',
     danger: '#EBB400',
   },
+  
+  hexagon:{
+    500: "#EBB400",
+    400: "#FAC30F",
+    300: "#FAD75F",
+    200: "#FFEBAF",
+    100: "#FFF5D7",
+  }
 
 }
 
