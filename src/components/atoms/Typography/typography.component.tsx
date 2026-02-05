@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Component, Variant, Weight } from "./typography.models";
+import {  Variant, Weight } from "./typography.models";
 import { TypographyLocalStyles } from "./typography.styles";
 import { theme } from "@/utils/ThemeProvider";
 
@@ -8,11 +8,8 @@ const { colors, typography } = theme;
 
 export type TypographyProps = {
   variant?: Variant;
-  component?: Component;
-
   color?: string;
   weight?: Weight;
-
   className?: string;
   children?: string | React.ReactNode;
 };

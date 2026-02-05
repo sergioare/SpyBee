@@ -52,7 +52,7 @@ const HeaderComponent = () => {
             <div className="navbar__right__menu">
               <div className="navbar__right__menu--user">
                 <Typography variant="s1"> {user?.username} </Typography>
-                <Typography variant="p2">{roleName()}</Typography>
+                <Typography variant="p2" >{roleName()}</Typography>
               </div>
               <ArrowDown
                 style={{

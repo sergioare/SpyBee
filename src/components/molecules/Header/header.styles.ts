@@ -1,7 +1,7 @@
 import { theme } from "@/utils/ThemeProvider";
 import css from "styled-jsx/css";
 
-const { colors, typography } = theme;
+const { colors } = theme;
 const HeaderStyles = css`
   .navbar {
     position: sticky;
@@ -39,9 +39,6 @@ const HeaderStyles = css`
   }
   .navbar__right__menu--user {
     color: ${colors.primary[100]};
-  }
-  .navbar__right__menu--user > p:first-child {
-    font-weight: ${typography.weight.semibold};
   }
 `;
 export default HeaderStyles;
