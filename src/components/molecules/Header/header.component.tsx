@@ -51,8 +51,8 @@ const HeaderComponent = () => {
             />
             <div className="navbar__right__menu">
               <div className="navbar__right__menu--user">
-                <Typography variant="s1"> {user?.username} </Typography>
-                <Typography variant="p2" >{roleName()}</Typography>
+                <Typography variant="s1" color={colors.primary[100]}> {user?.username} </Typography>
+                <Typography variant="p2" color={colors.primary[100]}>{roleName()}</Typography>
               </div>
               <ArrowDown
                 style={{

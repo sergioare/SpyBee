@@ -10,7 +10,6 @@ export const CustomInputStyles = css`
     align-items: center;
     width: 100%;
   }
-
   .customInput input {
     width: 100%;
     padding: 0.5rem 0.75rem; 
@@ -19,22 +18,18 @@ export const CustomInputStyles = css`
     outline: none;
     font-size: 0.875rem; 
   }
-
   .customInput__icon {
     position: absolute;
     display: flex;
     align-items: center;
     pointer-events: none;
   }
-
   .customInput.hasIcon.icon--left .customInput__icon {
     left: 0.625rem; 
   }
-
   .customInput.hasIcon.icon--left input {
     padding-left: 2.25rem; 
   }
-
   .customInput.hasIcon.icon--right .customInput__icon {
     right: 0.625rem; 
   }
@@ -42,8 +37,7 @@ export const CustomInputStyles = css`
   .customInput.hasIcon.icon--right input {
     padding-right: 2.25rem;
   }
-
   .customInput input::placeholder {
-    color: ${colors.neutrals[100]};
+    color: ${colors.neutrals[200]};
   }
 `;

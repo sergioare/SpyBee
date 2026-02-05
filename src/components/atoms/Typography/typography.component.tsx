@@ -24,7 +24,7 @@ export const Typography = (props: TypographyProps) => {
   } = props;
 
   const baseProps = {
-    className: `base ${variant} isColor'`,
+    className: `base ${variant} isColor`,
     ...(weight && { style: { fontWeight: typography.weight[weight] } }),
   };
 
@@ -42,9 +42,10 @@ export const Typography = (props: TypographyProps) => {
   };
 
   const CssVariables = {
-    "--selected-color": color ?? colors.primary[600],
+    "--selected-color": color || colors.primary[500],
   } as React.CSSProperties
 
+  console.log(CssVariables)
   return (
     <span style={CssVariables} className={`lib ${className}`}>
       {variants[variant]}
