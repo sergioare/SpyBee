@@ -1,7 +1,7 @@
- const DashboardPage = () => {
-  return (
-    <div>page</div>
-  )
-}
+import type { NextPage } from "next";
 
-export default DashboardPage
+import Dashboard from "@/components/modules/Dashboard";
+
+const DashboardPage: NextPage = () => <Dashboard />;
+
+export default DashboardPage;
