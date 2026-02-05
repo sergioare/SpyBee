@@ -29,9 +29,10 @@ const colors = {
   },
 
   status: {
-    success: "#128400",
-    warning: "#DDAD00",
-    danger: "#EBB400",
+    activeBg: "#DCF0DC",
+    activeText: "#107E31",
+    inactiveBg: "#F9E1E1",
+    inactiveText: "#9F1C1C",
   },
 
   hexagon: {
@@ -43,7 +44,9 @@ const colors = {
   },
 
   neutrals: {
-    100: "#9e9e9e",
+    300: "#6F7073",
+    200: "#9e9e9e",
+    100: "#E6E6E6",
   },
 };
 
