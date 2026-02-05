@@ -11,6 +11,7 @@ const typography = {
 
 const colors = {
   primary: {
+    900 :"#EBB400",
     800: '#EEB702',
     700: '#FEC510',
     600: '#000000',

@@ -10,6 +10,7 @@ import {
   DEFAULT_WHITE_LOGO,
 } from "@/utils/constants/defaultStaticImages";
 import { useAppContext } from "@/context/appContext";
+import { Typography } from "@/components/atoms/Typography";
 
 const { colors } = theme;
 
@@ -50,8 +51,8 @@ const HeaderComponent = () => {
             />
             <div className="navbar__right__menu">
               <div className="navbar__right__menu--user">
-                <p> {user?.username} </p>
-                <p>{roleName()}</p>
+                <Typography variant="s1"> {user?.username} </Typography>
+                <Typography variant="p2">{roleName()}</Typography>
               </div>
               <ArrowDown
                 style={{
