@@ -9,6 +9,7 @@ export const CustomInputStyles = css`
     display: flex;
     align-items: center;
     width: 100%;
+    max-width:12rem;
   }
   .customInput input {
     width: 100%;

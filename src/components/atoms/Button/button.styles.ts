@@ -8,11 +8,11 @@ export const buttonStyles = css`
   .buttonComponent {
     display: flex;
     align-items: center;
-    border-radius: 6.25rem;
+    border-radius:  0.25rem;
     padding: 0.25rem 1rem;
     cursor: pointer;
     border: none;
-    background: ${colors.primary[900]};
+    background: ${colors.hexagon[400]};
     color: ${colors.primary[600]};
     width: auto;
     justify-content: space-around;
@@ -46,6 +46,14 @@ export const buttonStyles = css`
     cursor: not-allowed;
   }
 
+  .buttonComponent__white {
+    color: ${colors.primary[500]};
+    background: ${colors.primary[100]};
+    padding: 0 !important;
+  }
+  .buttonComponent__white:focus {
+    background: transparent
+  }
   .buttonComponent__extra-small {
     height: 1.7rem;
   }
@@ -57,7 +65,7 @@ export const buttonStyles = css`
     font-size: 0.5rem;
   }
   .buttonComponent__small {
-    height: 2rem;
+    max-height: 2rem;
   }
   .buttonComponent__small div .lib_Typography-p1 {
     font-size: 0.75rem;
@@ -68,7 +76,8 @@ export const buttonStyles = css`
   }
 
   .buttonComponent__medium {
-    height: 2.5rem;
+    height: fit-content;
+    max-height: 2.5rem;
     padding: 0.375rem 1.5rem;
   }
   .buttonComponent__medium div .lib_Typography-p1 {

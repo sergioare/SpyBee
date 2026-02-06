@@ -5,13 +5,12 @@ import { CircularProgress, CircularProgressProps } from "@mui/material";
 import { buttonStyles } from "./button.styles";
 import { Typography } from "../Typography";
 
-type Variant = "contained" | "outlined" | "white" | "outlinedWhite";
+type Variant = "contained" | "outlined" | "white" ;
 
 const spinnerColor: { [key in Variant]: CircularProgressProps["color"] } = {
   contained: "inherit",
   outlined: "primary",
   white: "primary",
-  outlinedWhite: "inherit",
 };
 
 export type ButtonProps = {
@@ -79,7 +78,7 @@ export const Button = (props: ButtonProps) => {
             </div>
           )}
 
-          <Typography variant="p1" weight="bold">
+          <Typography variant="p1" weight="semibold">
             {children}
           </Typography>
 
