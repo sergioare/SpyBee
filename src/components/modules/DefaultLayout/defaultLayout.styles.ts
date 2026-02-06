@@ -8,7 +8,7 @@ export const DefaultLayoutLocalStyles = css`
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: ${colors.primary[100]};
+    background-color: ${colors.neutrals[50]};
     scroll-behavior: smooth;
   }
   .content {
