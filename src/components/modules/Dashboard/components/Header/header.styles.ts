@@ -17,7 +17,9 @@ const HeaderStyles = css`
     align-items: center;
     gap: 1rem;
   }
-
+  .header__actions{
+    position: relative;
+  }
   .header__actions--filters {
     flex-direction: row;
     gap: 0;
@@ -30,7 +32,6 @@ const HeaderStyles = css`
     height: 1.8rem;
     display: flex;
   }
-
   .header__actions :global(.--button):focus-within {
     background-color: transparent;
   }

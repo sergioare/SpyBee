@@ -10,10 +10,14 @@ import PlaceIcon from "@mui/icons-material/PlaceOutlined";
 import SearchIcon from "@mui/icons-material/SearchOutlined";
 import AddIcon from "@mui/icons-material/AddOutlined";
 import HeaderStyles from "./header.styles";
+import { useState } from "react";
+import FilterModal from "../FilterModal";
 
 const { colors } = theme;
 
 const HeaderComponent = () => {
+  const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
+
   return (
     <section className="header__container">
       <div className="header__title">
@@ -26,11 +30,20 @@ const HeaderComponent = () => {
         <div className="header__actions">
           <Button
             variant="white"
-            className="--button "
+            className="--button"
             icon={
               <SortIcon sx={{ color: colors.neutrals[300], fontSize: 18 }} />
             }
+            onClick={() => setIsFilterModalOpen(true)}
           />
+
+          {isFilterModalOpen && (
+            <FilterModal
+              isOpen={isFilterModalOpen}
+              onClose={() => setIsFilterModalOpen(false)}
+            />
+          )}
+          
           <div className="header__actions--filters">
             <Button
               variant="white"
@@ -63,11 +76,16 @@ const HeaderComponent = () => {
             iconPosition="right"
             icon={<SearchIcon sx={{ color: colors.neutrals[200] }} />}
           />
-          <Button variant="contained" size="large"  icon={<AddIcon sx={{ fontSize: 18 }} />}>
+          <Button
+            variant="contained"
+            size="large"
+            icon={<AddIcon sx={{ fontSize: 18 }} />}
+          >
             Crear proyecto
           </Button>
         </div>
       </div>
+
       <style jsx>{HeaderStyles}</style>
     </section>
   );
