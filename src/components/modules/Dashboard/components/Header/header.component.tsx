@@ -63,7 +63,7 @@ const HeaderComponent = () => {
             iconPosition="right"
             icon={<SearchIcon sx={{ color: colors.neutrals[200] }} />}
           />
-          <Button variant="contained" size="medium"  icon={<AddIcon sx={{ fontSize: 18 }} />}>
+          <Button variant="contained" size="large"  icon={<AddIcon sx={{ fontSize: 18 }} />}>
             Crear proyecto
           </Button>
         </div>

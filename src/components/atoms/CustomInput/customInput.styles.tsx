@@ -1,7 +1,7 @@
 import { theme } from "@/utils/ThemeProvider";
 import css from "styled-jsx/css";
 
-const {colors} = theme
+const { colors } = theme;
 
 export const CustomInputStyles = css`
   .customInput {
@@ -9,15 +9,16 @@ export const CustomInputStyles = css`
     display: flex;
     align-items: center;
     width: 100%;
-    max-width:12rem;
   }
   .customInput input {
     width: 100%;
-    padding: 0.5rem 0.75rem; 
-    border-radius: 0.25rem; 
-    border: 1.5px solid ${colors.primary[700]}; 
+    min-width:16.5rem;
+    height: 3rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.25rem;
+    border: 1.5px solid ${colors.primary[700]};
     outline: none;
-    font-size: 0.875rem; 
+    font-size: 0.875rem;
   }
   .customInput__icon {
     position: absolute;
@@ -26,13 +27,13 @@ export const CustomInputStyles = css`
     pointer-events: none;
   }
   .customInput.hasIcon.icon--left .customInput__icon {
-    left: 0.625rem; 
+    left: 0.625rem;
   }
   .customInput.hasIcon.icon--left input {
-    padding-left: 2.25rem; 
+    padding-left: 2.25rem;
   }
   .customInput.hasIcon.icon--right .customInput__icon {
-    right: 0.625rem; 
+    right: 0.625rem;
   }
 
   .customInput.hasIcon.icon--right input {
