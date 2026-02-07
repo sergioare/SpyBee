@@ -47,8 +47,8 @@ const ResumeTable = ({ headerNames, rows, isWithTeam }: ResumeTableProps) => {
           {rows.map((row, index) => (
             <article key={index} className="resume__table__row" role="row">
               <div className="resume__table__cell">
-                <Typography variant="p1">{row.projectTitle}</Typography>
-                <Typography variant="p2" color={colors.neutrals[200]}>
+                <Typography variant="p1" className="--text">{row.projectTitle}</Typography>
+                <Typography variant="p2" className="--text" color={colors.neutrals[200]}>
                   {row.projectSubtitle}
                 </Typography>
               </div>

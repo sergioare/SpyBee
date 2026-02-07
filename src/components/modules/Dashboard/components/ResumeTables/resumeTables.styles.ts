@@ -31,9 +31,22 @@ export const ResumeTableStyles = css`
     display: flex;
     gap: 1px;
   }
-  
+
   .resume__table__cell {
     gap: 2px;
+    padding-right: 0.5rem;
+    min-width: 0;
+    display: flex;
+    overflow: hidden;
+    flex-direction: column;
+  }
+  .resume__table__cell :global(.--text p) {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    margin: 0;
   }
   .resume__table__time {
     gap: 1px;
