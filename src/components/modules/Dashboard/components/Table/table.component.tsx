@@ -72,19 +72,7 @@ const mockProjects: Partial<Project>[] = [
     title: "Proyecto Beta",
     projectPlanData: { plan: "big" },
     status: "active",
-  },
-  {
-    _id: "1",
-    title: "Proyecto Alpha",
-    projectPlanData: { plan: "small" },
-    status: "active",
-  },
-  {
-    _id: "2",
-    title: "Proyecto Beta",
-    projectPlanData: { plan: "big" },
-    status: "active",
-  },
+  }
 ];
 
 export default function ProjectsTable({ onSelect, isSidePanelOpen }: Props) {

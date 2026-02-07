@@ -40,117 +40,107 @@ const SidePanel = ({ dueSoonRows, eventsRows }: ResumeSidePanelProps) => {
 
   return (
     <>
-      <div className="side__panel">
-        <div className="side__panel__content">
-          <header className="side__panel__header">
-            <AssessmentOutlinedIcon
-              sx={{ fontSize: 25, color: colors.neutrals[300] }}
-            />
-            <Typography variant="h5">Resumen</Typography>
-          </header>
+      <div className="side__panel__content">
+        <header className="side__panel__header">
+          <AssessmentOutlinedIcon
+            sx={{ fontSize: 25, color: colors.neutrals[300] }}
+          />
+          <Typography variant="h5">Resumen</Typography>
+        </header>
 
-          <nav className="side__panel__tabs">
-            {tabs.map((tab, index) => (
-              <button
-                key={tab}
-                type="button"
-                className={`side__panel__tab ${activeTab === index ? "--active" : ""}`}
-                onClick={() => setActiveTab(index)}
-                aria-selected={activeTab === index}
-                role="tab"
-              >
-                <Typography variant="p1" color={colors.neutrals[200]}>
-                  {tab}
-                </Typography>
-              </button>
-            ))}
+        <nav className="side__panel__tabs">
+          {tabs.map((tab, index) => (
             <button
-              className="side__panel__filter"
-              aria-label="Filtros"
+              key={tab}
               type="button"
+              className={`side__panel__tab ${activeTab === index ? "--active" : ""}`}
+              onClick={() => setActiveTab(index)}
+              aria-selected={activeTab === index}
+              role="tab"
             >
-              <FilterAltIcon
-                sx={{ fontSize: 20, color: colors.neutrals[300] }}
-              />
-              <Typography variant="p1" weight="semibold">
-                Filtros
+              <Typography variant="p1" color={colors.neutrals[200]}>
+                {tab}
               </Typography>
             </button>
-          </nav>
-
-          {activeTab === 0 && (
-            <>
-              <section className="side__panel__section">
-                <header className="side__panel__section-header">
-                  <div className="side__panel__section-title">
-                    <HistoryIcon
-                      sx={{ fontSize: 20, color: colors.primary[500] }}
-                    />
-                    <Typography variant="s1">Próximos a vencer</Typography>
-                  </div>
-                  <Button
-                    variant="white"
-                    className="side__panel__header--button"
-                  >
-                    Ver todos
-                  </Button>
-                </header>
-
-                <div className="statsCards__container">
-                  {statsData.map((item) => (
-                    <StatsCard
-                      key={item.title}
-                      title={item.title}
-                      total={item.total}
-                      currentOpen={item.current}
-                    />
-                  ))}
-                </div>
-
-                <ResumeTable
-                  headerNames={{
-                    projectTitle: "Proyecto",
-                    itemTitle: "Item",
-                    dueDateTitle: "Fecha límite",
-                  }}
-                  rows={dueSoonRows}
-                />
-              </section>
-
-              <section className="side__panel__section">
-                <header className="side__panel__section-header">
-                  <div className="side__panel__section-title">
-                    <CalendarIcon
-                      sx={{ fontSize: 20, color: colors.primary[500] }}
-                    />
-                    <Typography variant="s1">Próximos eventos</Typography>
-                  </div>
-                  <Button
-                    variant="white"
-                    className="side__panel__header--button"
-                  >
-                    Ver todos
-                  </Button>
-                </header>
-
-                <ResumeTable
-                  headerNames={{
-                    projectTitle: "Proyecto",
-                    teamTitle: "Equipo",
-                    dueDateTitle: "Fecha límite",
-                  }}
-                  rows={eventsRows}
-                  isWithTeam
-                />
-              </section>
-            </>
-          )}
-          {activeTab === 1 && (
-            <Typography variant="p1" color={colors.neutrals[200]}>
-              No hemos encontrado actualizaciones pendientes para mostrar
+          ))}
+          <button
+            className="side__panel__filter"
+            aria-label="Filtros"
+            type="button"
+          >
+            <FilterAltIcon sx={{ fontSize: 20, color: colors.neutrals[300] }} />
+            <Typography variant="p1" weight="semibold">
+              Filtros
             </Typography>
-          )}
-        </div>
+          </button>
+        </nav>
+
+        {activeTab === 0 && (
+          <>
+            <section className="side__panel__section">
+              <header className="side__panel__section-header">
+                <div className="side__panel__section-title">
+                  <HistoryIcon
+                    sx={{ fontSize: 20, color: colors.primary[500] }}
+                  />
+                  <Typography variant="s1">Próximos a vencer</Typography>
+                </div>
+                <Button variant="white" className="side__panel__header--button">
+                  Ver todos
+                </Button>
+              </header>
+
+              <div className="statsCards__container">
+                {statsData.map((item) => (
+                  <StatsCard
+                    key={item.title}
+                    title={item.title}
+                    total={item.total}
+                    currentOpen={item.current}
+                  />
+                ))}
+              </div>
+
+              <ResumeTable
+                headerNames={{
+                  projectTitle: "Proyecto",
+                  itemTitle: "Item",
+                  dueDateTitle: "Fecha límite",
+                }}
+                rows={dueSoonRows}
+              />
+            </section>
+
+            <section className="side__panel__section">
+              <header className="side__panel__section-header">
+                <div className="side__panel__section-title">
+                  <CalendarIcon
+                    sx={{ fontSize: 20, color: colors.primary[500] }}
+                  />
+                  <Typography variant="s1">Próximos eventos</Typography>
+                </div>
+                <Button variant="white" className="side__panel__header--button">
+                  Ver todos
+                </Button>
+              </header>
+
+              <ResumeTable
+                headerNames={{
+                  projectTitle: "Proyecto",
+                  teamTitle: "Equipo",
+                  dueDateTitle: "Fecha límite",
+                }}
+                rows={eventsRows}
+                isWithTeam
+              />
+            </section>
+          </>
+        )}
+        {activeTab === 1 && (
+          <Typography variant="p1" color={colors.neutrals[200]}>
+            No hemos encontrado actualizaciones pendientes para mostrar
+          </Typography>
+        )}
       </div>
 
       <style jsx>{SidePanelStyles}</style>

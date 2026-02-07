@@ -4,7 +4,11 @@ import { theme } from "@/utils/ThemeProvider";
 const { colors, typography } = theme;
 
 export const SidePanelStyles = css`
-  .side__panel {
+  .side__panel__content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem 1rem 2rem 1rem;
     position: relative;
     width: 100%;
     height: 100%;
@@ -12,13 +16,7 @@ export const SidePanelStyles = css`
     transition: width 0.3s ease;
     overflow: hidden;
     border-radius: 1rem;
-  }
-
-  .side__panel__content {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    padding: 1rem;
+    max-height: 45.625rem;
   }
 
   .side__panel__header {
@@ -61,6 +59,7 @@ export const SidePanelStyles = css`
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    overflow: hidden;
   }
 
   .side__panel__section-header {
