@@ -25,7 +25,8 @@ const HeaderStyles = css`
     gap: 0;
   }
 
-  .header__actions :global(.--button) {
+  .header__actions :global(.--button),
+  .header__actions :global(.--button-sort) {
     padding-left: 0.313rem;
     background-color: ${colors.primary[100]};
     border-radius: 0.25rem;

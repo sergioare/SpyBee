@@ -30,7 +30,7 @@ const HeaderComponent = () => {
         <div className="header__actions">
           <Button
             variant="white"
-            className="--button"
+            className="--button-sort"
             icon={
               <SortIcon sx={{ color: colors.neutrals[300], fontSize: 18 }} />
             }
