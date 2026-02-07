@@ -26,8 +26,7 @@ export const DefaultLayoutLocalStyles = css`
   }
   @media screen and (min-width: ${mediaQueries.desktop}) {
     .content {
-      max-width: 83rem;
-      padding: 1rem 1.5rem 4rem 1.5rem;
+      padding: 1rem 2rem 4rem 2rem;
     }
   }
 `

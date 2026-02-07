@@ -10,7 +10,7 @@ const HeaderStyles = css`
     align-items: center;
     width: 100%;
     height: 4.37rem;
-    padding: 1.5rem 1rem;
+    padding: 1.5rem 2rem;
     z-index: 12;
     gap: 1rem;
     background: ${colors.primary[500]};
