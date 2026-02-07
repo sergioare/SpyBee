@@ -13,6 +13,11 @@ export const TablesRowStyles = css`
     background-color: ${colors.primary[100]};
     cursor: pointer;
   }
+  .row__container--sidePanel--open{
+    grid-template-columns: 2.5fr 1fr 1fr 1.5fr 1.5fr;
+    padding: 0.75rem 2rem 0.75rem 1rem;
+
+  }
 
   .row__container:hover {
     background: transparent;

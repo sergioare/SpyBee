@@ -51,7 +51,8 @@ const colors = {
   },
 
   charts:{
-    red: "#ff6b6b"
+    red: "#ff6b6b",
+    blue: "#4A90E2"
   }
 };
 

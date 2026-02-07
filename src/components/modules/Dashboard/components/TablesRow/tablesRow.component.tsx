@@ -12,12 +12,13 @@ const { colors } = theme;
 type Props = {
   project: Partial<Project>;
   onClick: () => void;
+  isSidePanelOpen: boolean;
 };
 
-const TablesRow = ({ project, onClick }: Props) => {
+const TablesRow = ({ project, onClick, isSidePanelOpen }: Props) => {
   return (
     <>
-      <article className="row__container" onClick={onClick}>
+      <article className={`row__container ${isSidePanelOpen ? "row__container--sidePanel--open" : ""}`} onClick={onClick}>
         <div className="row__project">
           <div className="thumb" />
           <div>

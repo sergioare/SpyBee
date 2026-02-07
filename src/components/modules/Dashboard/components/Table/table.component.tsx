@@ -5,6 +5,7 @@ import { Typography } from "@/components/atoms/Typography";
 
 type Props = {
   onSelect: (project: Partial<Project>) => void;
+  isSidePanelOpen: boolean;
 };
 
 const mockProjects: Partial<Project>[] = [
@@ -86,11 +87,11 @@ const mockProjects: Partial<Project>[] = [
   },
 ];
 
-export default function ProjectsTable({ onSelect }: Props) {
+export default function ProjectsTable({ onSelect, isSidePanelOpen }: Props) {
   return (
     <>
-      <section className="projects">
-        <header className="projects__header">
+      <section>
+        <header className={`projects__header ${isSidePanelOpen ? "projects__header-sidePanel--open" : ""}`}>
           <Typography variant="p1">Proyecto</Typography>
           <Typography variant="p1">Plan</Typography>
           <Typography variant="p1">Estado</Typography>
@@ -101,7 +102,7 @@ export default function ProjectsTable({ onSelect }: Props) {
         <ul className="projects__list">
           {mockProjects.map((project) => (
             <li key={project._id}>
-              <TablesRow project={project} onClick={() => onSelect(project)} />
+              <TablesRow isSidePanelOpen={isSidePanelOpen} project={project} onClick={() => onSelect(project)} />
             </li>
           ))}
         </ul>
