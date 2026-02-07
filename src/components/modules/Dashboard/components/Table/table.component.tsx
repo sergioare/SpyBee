@@ -13,12 +13,16 @@ const mockProjects: Partial<Project>[] = [
     title: "Proyecto Alpha",
     projectPlanData: { plan: "small" },
     status: "active",
+    createdAt: "2023-11-24",
+    lastUpdated: "2023-11-24",
   },
   {
     _id: "2",
     title: "Proyecto Beta",
     projectPlanData: { plan: "big" },
     status: "active",
+    createdAt: "2023-11-24",
+    lastUpdated: "2023-11-24",
   },
   {
     _id: "1",

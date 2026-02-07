@@ -30,7 +30,12 @@ export const TablesRowStyles = css`
     background: ${colors.neutrals[50]};
     border-radius: 0.25rem;
   }
-
+  .row__project__dates {
+    display: flex;
+    gap: 2px;
+    padding-top: 0.5rem;
+    align-items: center;
+  }
   .team {
     display: flex;
     gap: 1px;

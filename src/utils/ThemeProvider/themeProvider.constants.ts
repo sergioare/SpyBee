@@ -49,6 +49,10 @@ const colors = {
     100: "#E6E6E6",
     50: "#F5F5F5",
   },
+
+  charts:{
+    red: "#ff6b6b"
+  }
 };
 
 const mediaQueries = {
