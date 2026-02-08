@@ -1,3 +1,4 @@
+"use client";
 import Chip from "@/components/atoms/Chip";
 import { Button } from "@/components/atoms/Button";
 import { Input } from "@/components/atoms/CustomInput";
@@ -10,17 +11,30 @@ import PlaceIcon from "@mui/icons-material/PlaceOutlined";
 import SearchIcon from "@mui/icons-material/SearchOutlined";
 import AddIcon from "@mui/icons-material/AddOutlined";
 import HeaderStyles from "./header.styles";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import FilterModal from "../FilterModal";
 import useDashboardStore from "@/store/dashboard/dashboard.store";
 
 const { colors } = theme;
 
 const HeaderComponent = () => {
-  const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
   const projects = useDashboardStore((s) => s.projects);
+  const searchTerm = useDashboardStore((state) => state.searchTerm);
+  const setSearchTerm = useDashboardStore((state) => state.setSearchTerm);
+
+  const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
+  const [searchLocal, setSearchLocal] = useState(searchTerm);
+
   const totalProjects = projects?.length ?? 0;
-  
+
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setSearchTerm(searchLocal);
+    }, 300);
+
+    return () => clearTimeout(handler);
+  }, [searchLocal, setSearchTerm]);
+
   return (
     <section className="header__container">
       <div className="header__title">
@@ -46,7 +60,7 @@ const HeaderComponent = () => {
               onClose={() => setIsFilterModalOpen(false)}
             />
           )}
-          
+
           <div className="header__actions--filters">
             <Button
               variant="white"
@@ -77,6 +91,8 @@ const HeaderComponent = () => {
           <Input
             placeholder="Buscar"
             iconPosition="right"
+            value={searchLocal}
+            onChange={(value) => setSearchLocal(value)}
             icon={<SearchIcon sx={{ color: colors.neutrals[200] }} />}
           />
           <Button
