@@ -7,6 +7,7 @@ type DashboardState = {
   paginatedProjects: Project[];
   sortBy: SortBy;
   currentPage: number;
+  totalPages: number;
   pageSize: number;
   isLoading: boolean;
   searchTerm: string;

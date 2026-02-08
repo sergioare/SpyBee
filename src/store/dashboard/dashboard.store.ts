@@ -9,6 +9,7 @@ import {
   getUpcomingIncidentsWithUsers,
 } from "./dashboard.utils";
 import { selectDashboardProjects } from "./dashboard.selectors";
+import { getTotalPages } from "@/utils/constants/pagination";
 
 const initialState: DashboardState = {
   projects: [],
@@ -16,6 +17,7 @@ const initialState: DashboardState = {
   isLoading: false,
   sortBy: "name",
   currentPage: 1,
+  totalPages: 1,
   pageSize: 10,
   searchTerm: "",
   incidentSummary: {
@@ -40,6 +42,7 @@ const useDashboardStore = create<DashboardState & DashboardActions>((set) => ({
         const nextState = {
           ...state,
           projects: data.data,
+          totalPages: getTotalPages(data.data.length, 10),
           incidentSummary: getProjectIncidentSummary(data.data),
           upcomingIncidentWithUsers: getUpcomingIncidentsWithUsers(
             data.data,
@@ -60,15 +63,47 @@ const useDashboardStore = create<DashboardState & DashboardActions>((set) => ({
   },
 
   setSortBy: (sortBy: SortBy) => {
-    set({ sortBy, currentPage: 1 });
+    set((state) => {
+      const nextState = {
+        ...state,
+        sortBy,
+        currentPage: 1,
+      };
+
+      return {
+        ...nextState,
+        paginatedProjects: selectDashboardProjects(nextState),
+      };
+    });
   },
 
   setPage: (page: number) => {
-    set({ currentPage: page });
+    set((state) => {
+      const nextState = {
+        ...state,
+        currentPage: page,
+      };
+
+      return {
+        ...nextState,
+        paginatedProjects: selectDashboardProjects(nextState),
+      };
+    });
   },
 
   setSearchTerm: (term: string) => {
-    set({ searchTerm: term });
+    set((state) => {
+      const nextState = {
+        ...state,
+        searchTerm: term,
+        currentPage: 1,
+      };
+
+      return {
+        ...nextState,
+        paginatedProjects: selectDashboardProjects(nextState),
+      };
+    });
   },
 }));
 

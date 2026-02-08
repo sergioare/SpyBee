@@ -17,4 +17,21 @@ export const TableStyles = css`
     margin: 0;
     padding: 0 0.5rem 0 0;
   }
+
+  .projectTable__pagination {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+    align-items: center;
+  }
+  .projectTable__pagination--button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+  }
 `;
