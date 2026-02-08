@@ -1,5 +1,5 @@
 export type ChipProps = {
-  title: string
+  title?: string;
   size?: string
   status?:
     | string
@@ -9,5 +9,8 @@ export type ChipProps = {
     | 'small'
     | 'advanced'
     | 'premium'
+    | "pending_payment"
+    | "suspended"
+    | "big"
   fullWidth?: boolean
 }
