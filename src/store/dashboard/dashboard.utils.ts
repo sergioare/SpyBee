@@ -1,7 +1,6 @@
 import { includesSearchTerm } from "@/utils/constants/normilizeText";
 import {
   IncidentSummary,
-  IncidentWithProject,
   Project,
   ProjectIncidentSummary,
   SortBy,
@@ -57,20 +56,19 @@ export const incidentMatchesSearch = (
   });
 };
 
-export const extractIncidents = (projects: Project[]): IncidentWithProject[] =>
-  projects.flatMap((project) =>
-    project.incidents.map((incident) => ({
-      projectId: project._id,
-      projectTitle: project.title,
-      incident,
-    })),
-  );
-
-export const getUpcomingIncidents = (
+export const getUpcomingIncidentsWithUsers = (
   projects: Project[],
   limit = 3,
-): IncidentWithProject[] => {
-  return extractIncidents(projects)
+): UpcomingIncidentWithUsers[] => {
+  return projects
+    .flatMap((project) =>
+      project.incidents.map((incident) => ({
+        projectId: project._id,
+        projectTitle: project.title,
+        incident,
+        users: project.users,
+      })),
+    )
     .filter(({ incident }) => incident.status === "active")
     .sort(
       (a, b) =>
@@ -80,36 +78,13 @@ export const getUpcomingIncidents = (
     .slice(0, limit);
 };
 
-export const attachUsersToUpcomingIncidents = (
-  upcomingIncidents: {
-    projectId: string;
-    projectTitle: string;
-    incident: Incident;
-  }[],
-  projects: Project[],
-): UpcomingIncidentWithUsers[] => {
-  return upcomingIncidents.map((item) => {
-    const project = projects.find((p) => p._id === item.projectId);
-
-    return {
-      ...item,
-      users: project?.users ?? [],
-    };
-  });
-};
-
-const emptySummary = (): IncidentSummary => ({
-  total: 0,
-  active: 0,
-});
-
 export const getProjectIncidentSummary = (
   projects: Project[],
 ): ProjectIncidentSummary => {
   const summary: ProjectIncidentSummary = {
-    incidents: emptySummary(),
-    rfi: emptySummary(),
-    tasks: emptySummary(),
+    incidents: { total: 0, active: 0 },
+    rfi: { total: 0, active: 0 },
+    tasks: { total: 0, active: 0 },
   };
 
   projects.forEach((project) => {
