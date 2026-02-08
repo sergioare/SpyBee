@@ -4,11 +4,14 @@ type SortBy = "name" | "incidents" | "rfi" | "tasks";
 
 type DashboardState = {
   projects: Project[];
+  paginatedProjects: Project[];
   sortBy: SortBy;
   currentPage: number;
   pageSize: number;
   isLoading: boolean;
   searchTerm: string;
+  incidentSummary: ProjectIncidentSummary;
+  upcomingIncidentWithUsers: UpcomingIncidentWithUsers[];
 };
 
 type DashboardActions = {

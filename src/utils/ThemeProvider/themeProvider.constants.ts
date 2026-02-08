@@ -33,6 +33,10 @@ const colors = {
     activeText: "#107E31",
     inactiveBg: "#F9E1E1",
     inactiveText: "#9F1C1C",
+    pendingBg: "#FEF5E7",
+    pendingText: "#B45D05",
+    suspendedBg: "#EAECEE",
+    suspendedText: "#566573",
   },
 
   hexagon: {
@@ -50,10 +54,10 @@ const colors = {
     50: "#F5F5F5",
   },
 
-  charts:{
+  charts: {
     red: "#ff6b6b",
-    blue: "#4A90E2"
-  }
+    blue: "#4A90E2",
+  },
 };
 
 const mediaQueries = {

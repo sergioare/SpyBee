@@ -12,19 +12,22 @@ import AddIcon from "@mui/icons-material/AddOutlined";
 import HeaderStyles from "./header.styles";
 import { useState } from "react";
 import FilterModal from "../FilterModal";
+import useDashboardStore from "@/store/dashboard/dashboard.store";
 
 const { colors } = theme;
 
 const HeaderComponent = () => {
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
-
+  const projects = useDashboardStore((s) => s.projects);
+  const totalProjects = projects?.length ?? 0;
+  
   return (
     <section className="header__container">
       <div className="header__title">
         <Typography variant="h1" weight="semibold">
           Mis proyectos
         </Typography>
-        <Chip title="proyectos" />
+        <Chip title={`${totalProjects} proyectos`} />
       </div>
       <div className="header__actions">
         <div className="header__actions">

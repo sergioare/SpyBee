@@ -9,6 +9,7 @@ import { theme } from "@/utils/ThemeProvider";
 import SidePanel from "./components/SidePanel/sidePanel.component";
 
 const { colors } = theme;
+
 export const DashboardComponent = () => {
   const [isSidePanelOpen, setIsSidePanelOpen] = useState(false);
   return (
@@ -31,45 +32,6 @@ export const DashboardComponent = () => {
             <SidePanel
               isOpen={!isSidePanelOpen}
               onClose={() => setIsSidePanelOpen(false)}
-              dueSoonRows={[
-                {
-                  projectTitle: "Proyecto Alpha",
-                  projectSubtitle: "Revisión de planos estructurales",
-                  itemType: "Incidencia",
-                  dueDate: "12/02/2025",
-                  dueTime: "15:00",
-                },
-                {
-                  projectTitle: "Proyecto Alpha",
-                  projectSubtitle: "Respuesta pendiente proveedor",
-                  itemType: "RFI",
-                  dueDate: "13/02/2025",
-                  dueTime: "10:30",
-                },
-                {
-                  projectTitle: "Proyecto Beta",
-                  projectSubtitle: "Validación checklist seguridad",
-                  itemType: "Tarea",
-                  dueDate: "14/02/2025",
-                  dueTime: "09:00",
-                },
-              ]}
-              eventsRows={[
-                {
-                  projectTitle: "Proyecto Gamma",
-                  projectSubtitle: "Reunión de avance semanal",
-                  itemType: "Evento",
-                  dueDate: "15/02/2025",
-                  dueTime: "11:00",
-                },
-                {
-                  projectTitle: "Proyecto Delta",
-                  projectSubtitle: "Inspección técnica en sitio",
-                  itemType: "Evento",
-                  dueDate: "16/02/2025",
-                  dueTime: "08:30",
-                }
-              ]}
             />
           </aside>
         )}

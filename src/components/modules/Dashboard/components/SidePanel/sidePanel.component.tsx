@@ -9,34 +9,57 @@ import HistoryIcon from "@mui/icons-material/HistoryOutlined";
 import { Button } from "@/components/atoms/Button";
 import CalendarIcon from "@mui/icons-material/CalendarMonthOutlined";
 import StatsCard from "../StatsCard";
-
-type ResumeTableRow = {
-  projectTitle: string;
-  projectSubtitle: string;
-  itemType: string;
-  dueDate: string;
-  dueTime: string;
-};
+import useDashboardStore from "@/store/dashboard/dashboard.store";
+import { getInitials } from "@/utils/constants/normilizeText";
+import { formatIsoDate } from "@/utils/constants/dates";
 
 type ResumeSidePanelProps = {
   isOpen: boolean;
   onClose: () => void;
-  dueSoonRows: ResumeTableRow[];
-  eventsRows: ResumeTableRow[];
 };
 
 const { colors } = theme;
 
-const SidePanel = ({ dueSoonRows, eventsRows }: ResumeSidePanelProps) => {
+const SidePanel = ({}: ResumeSidePanelProps) => {
   const [activeTab, setActiveTab] = useState(0);
+
+  const incidentSummary = useDashboardStore((state) => state.incidentSummary);
+  console.log(incidentSummary);
+  const upcommingIncidentsWithUsers = useDashboardStore(
+    (state) => state.upcomingIncidentWithUsers,
+  );
 
   const tabs = ["General", "Mis actualizaciones"];
 
   const statsData = [
-    { title: "Incidencias", total: 60, current: 10 },
-    { title: "RFI", total: 50, current: 23 },
-    { title: "Tareas", total: 120, current: 50 },
+    {
+      title: "Incidencias",
+      total: incidentSummary.incidents.total,
+      current: incidentSummary.incidents.active,
+    },
+    {
+      title: "RFI",
+      total: incidentSummary.rfi.total,
+      current: incidentSummary.rfi.active,
+    },
+    {
+      title: "Tareas",
+      total: incidentSummary.tasks.total,
+      current: incidentSummary.tasks.active,
+    },
   ];
+
+  const upcommingStuff = upcommingIncidentsWithUsers.map((item) => {
+    const initials = item.users.map((user) => getInitials(user));
+    return {
+      projectTitle: item.projectTitle,
+      projectDescription: item.incident.description,
+      associatedTeam: initials,
+      itemType: item.incident.item,
+      dueDate: formatIsoDate(item.incident.limitDate).label,
+      dueTime: formatIsoDate(item.incident.limitDate).tag,
+    };
+  });
 
   return (
     <>
@@ -107,7 +130,7 @@ const SidePanel = ({ dueSoonRows, eventsRows }: ResumeSidePanelProps) => {
                   itemTitle: "Item",
                   dueDateTitle: "Fecha límite",
                 }}
-                rows={dueSoonRows}
+                rows={upcommingStuff}
               />
             </section>
 
@@ -130,7 +153,7 @@ const SidePanel = ({ dueSoonRows, eventsRows }: ResumeSidePanelProps) => {
                   teamTitle: "Equipo",
                   dueDateTitle: "Fecha límite",
                 }}
-                rows={eventsRows}
+                rows={upcommingStuff}
                 isWithTeam
               />
             </section>

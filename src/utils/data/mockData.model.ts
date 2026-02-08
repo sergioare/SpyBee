@@ -77,4 +77,4 @@ type Coordinates = {
   lng: number;
 };
 
-export type { Project, Incident, ProjectUser};
+export type { Project, Incident, ProjectUser, IncidentItem};
