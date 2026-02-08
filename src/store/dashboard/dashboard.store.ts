@@ -4,14 +4,25 @@ import type {
   DashboardActions,
   SortBy,
 } from "./dashboard.model";
+import {
+  getProjectIncidentSummary,
+} from "./dashboard.utils";
+import { selectDashboardProjects } from "./dashboard.selectors";
 
 const initialState: DashboardState = {
   projects: [],
+  paginatedProjects: [],
   isLoading: false,
   sortBy: "name",
   currentPage: 1,
   pageSize: 10,
   searchTerm: "",
+  incidentSummary: {
+    incidents: { total: 0, active: 0 },
+    rfi: { total: 0, active: 0 },
+    tasks: { total: 0, active: 0 },
+  },
+  upcomingIncidentWithUsers: [],
 };
 
 const useDashboardStore = create<DashboardState & DashboardActions>((set) => ({
@@ -24,9 +35,18 @@ const useDashboardStore = create<DashboardState & DashboardActions>((set) => ({
       const response = await fetch("/api/projects");
       const data = await response.json();
 
-      set({
-        projects: data.data,
-        isLoading: false,
+      set((state) => {
+        const nextState = {
+          ...state,
+          projects: data.data,
+          incidentSummary: getProjectIncidentSummary(data.data),
+          isLoading: false,
+        };
+
+        return {
+          ...nextState,
+          paginatedProjects: selectDashboardProjects(nextState),
+        };
       });
     } catch (error) {
       set({ isLoading: false });

@@ -1,18 +1,7 @@
 import { includesSearchTerm } from "@/utils/constants/normilizeText";
-import {
-  DashboardState,
-  Project,
-  ProjectIncidentSummary,
-  SortBy,
-} from "./dashboard.model";
+import { DashboardState, Project } from "./dashboard.model";
 import { paginate } from "@/utils/constants/pagination";
-import {
-  attachUsersToUpcomingIncidents,
-  getProjectIncidentSummary,
-  getUpcomingIncidents,
-  incidentMatchesSearch,
-  sortProjects,
-} from "./dashboard.utils";
+import { incidentMatchesSearch, sortProjects } from "./dashboard.utils";
 
 const filterProjectsBySearch = (
   projects: Project[],
@@ -35,28 +24,9 @@ const filterProjectsBySearch = (
   });
 };
 
-export const selectDashboardProjects = (
-  projects: Project[],
-  searchTerm: string,
-  sortBy: SortBy,
-  currentPage: number,
-  pageSize: number,
-) => {
+export const selectDashboardProjects = (state: DashboardState) => {
+  const { projects, searchTerm, sortBy, currentPage, pageSize } = state;
   const searched = filterProjectsBySearch(projects, searchTerm);
   const sorted = sortProjects(searched, sortBy);
   return paginate(sorted, currentPage, pageSize);
 };
-
-export const selectUpcomingIncidents = (state: DashboardState) => {
-  return getUpcomingIncidents(state.projects, 3);
-};
-
-export const selectUpcomingIncidentsWithUsers = (state: DashboardState) => {
-  const upcoming = selectUpcomingIncidents(state);
-
-  return attachUsersToUpcomingIncidents(upcoming, state.projects);
-};
-
-export const selectProjectIncidentSummary = (
-  state: DashboardState,
-): ProjectIncidentSummary => getProjectIncidentSummary(state.projects);
