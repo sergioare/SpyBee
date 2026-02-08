@@ -9,7 +9,7 @@ export const TableStyles = css`
   }
   .projects__header-sidePanel--open {
     grid-template-columns: 2.5fr 1fr 1fr 1.5fr 1.5fr;
-    padding: 0.75rem 2.5rem 0.75rem 1rem;
+    padding: 0.75rem 2rem 0.75rem 1rem;
   }
 
   .projects__list {

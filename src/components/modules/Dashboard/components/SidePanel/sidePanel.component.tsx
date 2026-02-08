@@ -24,7 +24,6 @@ const SidePanel = ({}: ResumeSidePanelProps) => {
   const [activeTab, setActiveTab] = useState(0);
 
   const incidentSummary = useDashboardStore((state) => state.incidentSummary);
-  console.log(incidentSummary);
   const upcommingIncidentsWithUsers = useDashboardStore(
     (state) => state.upcomingIncidentWithUsers,
   );

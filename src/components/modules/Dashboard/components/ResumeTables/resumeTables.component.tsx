@@ -3,25 +3,7 @@ import { ResumeTableStyles } from "./resumeTables.styles";
 import { theme } from "@/utils/ThemeProvider";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import { Hexagon } from "@/components/atoms/Hexagon";
-
-type ResumeTableRow = {
-  projectTitle: string;
-  projectSubtitle: string;
-  itemType: string;
-  dueDate: string;
-  dueTime: string;
-};
-type HeaderNames = {
-  projectTitle: string;
-  itemTitle?: string;
-  teamTitle?: string;
-  dueDateTitle: string;
-};
-type ResumeTableProps = {
-  headerNames: HeaderNames;
-  rows: ResumeTableRow[];
-  isWithTeam?: boolean;
-};
+import { ResumeTableProps } from "./resumeTables.model";
 
 const { colors } = theme;
 
@@ -49,15 +31,15 @@ const ResumeTable = ({ headerNames, rows, isWithTeam }: ResumeTableProps) => {
               <div className="resume__table__cell">
                 <Typography variant="p1" className="--text">{row.projectTitle}</Typography>
                 <Typography variant="p2" className="--text" color={colors.neutrals[200]}>
-                  {row.projectSubtitle}
+                  {row.projectDescription}
                 </Typography>
               </div>
 
               {isWithTeam ? (
                 <ul className="team">
-                  {["JC", "AO", "ML"].map((i) => (
-                    <Hexagon key={i} size={25}>
-                      {i}
+                  {row.associatedTeam?.map((user) => ( 
+                    <Hexagon key={user.id} size={25}>
+                      {user.name}
                     </Hexagon>
                   ))}
                 </ul>
