@@ -27,7 +27,7 @@ const TablesRow = ({ project, onClick, isSidePanelOpen }: Props) => {
 
   const getActiveCountByItem = (itemType: IncidentItem) => {
     return project.incidents.filter(
-      (incident) => incident.item === itemType && incident.status === "active",
+      (incident) => incident.item === itemType,
     ).length;
   };
 

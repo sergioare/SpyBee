@@ -14,6 +14,7 @@ import HeaderStyles from "./header.styles";
 import { useEffect, useState } from "react";
 import FilterModal from "../FilterModal";
 import useDashboardStore from "@/store/dashboard/dashboard.store";
+import { SortBy } from "@/store/dashboard/dashboard.model";
 
 const { colors } = theme;
 
@@ -21,6 +22,7 @@ const HeaderComponent = () => {
   const projects = useDashboardStore((s) => s.projects);
   const searchTerm = useDashboardStore((state) => state.searchTerm);
   const setSearchTerm = useDashboardStore((state) => state.setSearchTerm);
+  const setSortBy = useDashboardStore((state) => state.setSortBy);
 
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
   const [searchLocal, setSearchLocal] = useState(searchTerm);
@@ -58,6 +60,7 @@ const HeaderComponent = () => {
             <FilterModal
               isOpen={isFilterModalOpen}
               onClose={() => setIsFilterModalOpen(false)}
+              onSelect={(value) => setSortBy(value as SortBy)}
             />
           )}
 
