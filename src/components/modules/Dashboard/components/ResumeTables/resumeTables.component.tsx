@@ -4,6 +4,7 @@ import { theme } from "@/utils/ThemeProvider";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import { Hexagon } from "@/components/atoms/Hexagon";
 import { ResumeTableProps } from "./resumeTables.model";
+import { getHexagonList } from "@/utils/constants/counters";
 
 const { colors } = theme;
 
@@ -29,17 +30,23 @@ const ResumeTable = ({ headerNames, rows, isWithTeam }: ResumeTableProps) => {
           {rows.map((row, index) => (
             <article key={index} className="resume__table__row" role="row">
               <div className="resume__table__cell">
-                <Typography variant="p1" className="--text">{row.projectTitle}</Typography>
-                <Typography variant="p2" className="--text" color={colors.neutrals[200]}>
+                <Typography variant="p1" className="--text">
+                  {row.projectTitle}
+                </Typography>
+                <Typography
+                  variant="p2"
+                  className="--text"
+                  color={colors.neutrals[200]}
+                >
                   {row.projectDescription}
                 </Typography>
               </div>
 
               {isWithTeam ? (
                 <ul className="team">
-                  {row.associatedTeam?.map((user) => ( 
-                    <Hexagon key={user.id} size={25}>
-                      {user.name}
+                  {getHexagonList(row.users, 3).map((item) => (
+                    <Hexagon key={item.id} size={25} color={item.color}>
+                      {item.label}
                     </Hexagon>
                   ))}
                 </ul>

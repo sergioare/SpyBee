@@ -1,7 +1,9 @@
+import { ProjectUser } from "@/utils/data/mockData.model";
+
 type ResumeTableRow = {
   projectTitle: string;
   projectDescription: string;
-  associatedTeam?: AssociatedTeam[];
+  users: ProjectUser[];
   itemType: string;
   dueDate: string;
   dueTime: string;
@@ -16,11 +18,6 @@ type ResumeTableProps = {
   headerNames: HeaderNames;
   rows: ResumeTableRow[];
   isWithTeam?: boolean;
-};
-
-type AssociatedTeam = {
-  name: string;
-  id: string;
 };
 
 export type { ResumeTableProps, ResumeTableRow, HeaderNames };

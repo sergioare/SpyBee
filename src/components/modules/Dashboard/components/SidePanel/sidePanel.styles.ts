@@ -16,7 +16,7 @@ export const SidePanelStyles = css`
     transition: width 0.3s ease;
     overflow: hidden;
     border-radius: 1rem;
-    max-height: 45.625rem;
+    max-height: 47.125rem;
   }
 
   .side__panel__header {
@@ -59,9 +59,10 @@ export const SidePanelStyles = css`
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+  }
+  .--section-events {
     overflow: hidden;
   }
-
   .side__panel__section-header {
     display: flex;
     justify-content: space-between;

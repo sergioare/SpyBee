@@ -6,6 +6,7 @@ import type {
 } from "./dashboard.model";
 import {
   getProjectIncidentSummary,
+  getUpcomingIncidentsWithUsers,
 } from "./dashboard.utils";
 import { selectDashboardProjects } from "./dashboard.selectors";
 
@@ -40,6 +41,10 @@ const useDashboardStore = create<DashboardState & DashboardActions>((set) => ({
           ...state,
           projects: data.data,
           incidentSummary: getProjectIncidentSummary(data.data),
+          upcomingIncidentWithUsers: getUpcomingIncidentsWithUsers(
+            data.data,
+            3,
+          ),
           isLoading: false,
         };
 

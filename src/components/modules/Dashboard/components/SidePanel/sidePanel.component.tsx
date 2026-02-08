@@ -10,8 +10,7 @@ import { Button } from "@/components/atoms/Button";
 import CalendarIcon from "@mui/icons-material/CalendarMonthOutlined";
 import StatsCard from "../StatsCard";
 import useDashboardStore from "@/store/dashboard/dashboard.store";
-import { getInitials } from "@/utils/constants/normilizeText";
-import { formatIsoDate } from "@/utils/constants/dates";
+import { extractDueDateTime } from "@/utils/constants/dates";
 
 type ResumeSidePanelProps = {
   isOpen: boolean;
@@ -27,7 +26,6 @@ const SidePanel = ({}: ResumeSidePanelProps) => {
   const upcommingIncidentsWithUsers = useDashboardStore(
     (state) => state.upcomingIncidentWithUsers,
   );
-
   const tabs = ["General", "Mis actualizaciones"];
 
   const statsData = [
@@ -49,14 +47,13 @@ const SidePanel = ({}: ResumeSidePanelProps) => {
   ];
 
   const upcommingStuff = upcommingIncidentsWithUsers.map((item) => {
-    const initials = item.users.map((user) => getInitials(user));
     return {
       projectTitle: item.projectTitle,
       projectDescription: item.incident.description,
-      associatedTeam: initials,
+      users: item.users,
       itemType: item.incident.item,
-      dueDate: formatIsoDate(item.incident.limitDate).label,
-      dueTime: formatIsoDate(item.incident.limitDate).tag,
+      dueDate: extractDueDateTime(item.incident.limitDate).dueDate,
+      dueTime: extractDueDateTime(item.incident.limitDate).dueTime,
     };
   });
 
@@ -133,7 +130,7 @@ const SidePanel = ({}: ResumeSidePanelProps) => {
               />
             </section>
 
-            <section className="side__panel__section">
+            <section className="side__panel__section --section-events">
               <header className="side__panel__section-header">
                 <div className="side__panel__section-title">
                   <CalendarIcon
