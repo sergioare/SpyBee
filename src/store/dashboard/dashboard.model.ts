@@ -1,4 +1,4 @@
-import { Project } from "@/utils/data/mockData.model";
+import { Incident, Project } from "@/utils/data/mockData.model";
 
 type SortBy = "name" | "incidents" | "rfi" | "tasks";
 
@@ -18,4 +18,34 @@ type DashboardActions = {
   setSearchTerm: (term: string) => void;
 };
 
-export type { DashboardState, DashboardActions, SortBy, Project };
+type IncidentWithProject = {
+  projectId: string;
+  projectTitle: string;
+  incident: Incident;
+};
+
+type UpcomingIncidentWithUsers = IncidentWithProject & {
+  users: Project["users"];
+};
+
+type IncidentSummary = {
+  total: number;
+  active: number;
+};
+
+type ProjectIncidentSummary = {
+  incidents: IncidentSummary;
+  rfi: IncidentSummary;
+  tasks: IncidentSummary;
+};
+
+export type {
+  DashboardState,
+  DashboardActions,
+  SortBy,
+  Project,
+  IncidentWithProject,
+  UpcomingIncidentWithUsers,
+  ProjectIncidentSummary,
+  IncidentSummary,
+};
