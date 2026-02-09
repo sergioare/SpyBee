@@ -10,7 +10,7 @@ mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAP_BOX_API_KEY;
 type LngLatArray = [number, number];
 
 const INITIAL_CENTER: LngLatArray = [-74.0242, 40.6941];
-const INITIAL_ZOOM = 10.12;
+const INITIAL_ZOOM = 5;
 
 export default function Map() {
   const mapRef = useRef<mapboxgl.Map | null>(null);
