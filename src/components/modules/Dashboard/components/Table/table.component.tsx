@@ -8,7 +8,7 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { theme } from "@/utils/ThemeProvider";
 
 type Props = {
-  onSelect: (project: Partial<Project>) => void;
+  onSelect: (project: Project) => void;
   isSidePanelOpen: boolean;
 };
 

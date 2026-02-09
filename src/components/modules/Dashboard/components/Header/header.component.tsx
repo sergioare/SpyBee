@@ -23,6 +23,9 @@ const HeaderComponent = () => {
   const searchTerm = useDashboardStore((state) => state.searchTerm);
   const setSearchTerm = useDashboardStore((state) => state.setSearchTerm);
   const setSortBy = useDashboardStore((state) => state.setSortBy);
+    const setSelectedProject = useDashboardStore(
+    (state) => state.setSelectedProject,
+  );
 
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
   const [searchLocal, setSearchLocal] = useState(searchTerm);
@@ -66,6 +69,7 @@ const HeaderComponent = () => {
 
           <div className="header__actions--filters">
             <Button
+              onClick={() => setSelectedProject(null)}
               variant="white"
               className="--button --initial"
               icon={

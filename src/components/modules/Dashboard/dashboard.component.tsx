@@ -7,11 +7,18 @@ import AssessmentOutlinedIcon from "@mui/icons-material/AssessmentOutlined";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { theme } from "@/utils/ThemeProvider";
 import SidePanel from "./components/SidePanel/sidePanel.component";
+import Map from "../../molecules/Map";
+import useDashboardStore from "@/store/dashboard/dashboard.store";
 
 const { colors } = theme;
 
 export const DashboardComponent = () => {
   const [isSidePanelOpen, setIsSidePanelOpen] = useState(false);
+  const setSelectedProject = useDashboardStore(
+    (state) => state.setSelectedProject,
+  );
+  const selectedProject = useDashboardStore((state) => state.selectedProject);
+
   return (
     <>
       <Header />
@@ -21,9 +28,10 @@ export const DashboardComponent = () => {
         }`}
       >
         <section className="dashboard__table">
+          {selectedProject && <Map />}
           <Table
             isSidePanelOpen={isSidePanelOpen}
-            onSelect={(project) => console.log(project)}
+            onSelect={(project) =>setSelectedProject(project)}
           />
         </section>
 

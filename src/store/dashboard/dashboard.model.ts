@@ -13,6 +13,7 @@ type DashboardState = {
   searchTerm: string;
   incidentSummary: ProjectIncidentSummary;
   upcomingIncidentWithUsers: UpcomingIncidentWithUsers[];
+  selectedProject: Project | null;
 };
 
 type DashboardActions = {
@@ -20,6 +21,7 @@ type DashboardActions = {
   setSortBy: (sortBy: SortBy) => void;
   setPage: (page: number) => void;
   setSearchTerm: (term: string) => void;
+  setSelectedProject: (project: Project | null) => void;
 };
 
 type IncidentWithProject = {

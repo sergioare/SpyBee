@@ -3,6 +3,7 @@ import type {
   DashboardState,
   DashboardActions,
   SortBy,
+  Project,
 } from "./dashboard.model";
 import {
   getProjectIncidentSummary,
@@ -26,6 +27,7 @@ const initialState: DashboardState = {
     tasks: { total: 0, active: 0 },
   },
   upcomingIncidentWithUsers: [],
+  selectedProject: null,
 };
 
 const useDashboardStore = create<DashboardState & DashboardActions>((set) => ({
@@ -97,6 +99,26 @@ const useDashboardStore = create<DashboardState & DashboardActions>((set) => ({
         ...state,
         searchTerm: term,
         currentPage: 1,
+      };
+
+      return {
+        ...nextState,
+        paginatedProjects: selectDashboardProjects(nextState),
+      };
+    });
+  },
+
+  setSelectedProject: (project: Project | null) => {
+    set((state) => {
+      const newPageSize = project ? 4 : initialState.pageSize;
+      const newTotalPages = getTotalPages(state.projects.length, newPageSize);
+      
+      const nextState = {
+        ...state,
+        currentPage: 1,
+        pageSize: newPageSize,
+        selectedProject: project,
+        totalPages: newTotalPages,
       };
 
       return {
