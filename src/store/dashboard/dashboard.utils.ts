@@ -60,6 +60,7 @@ export const getUpcomingIncidentsWithUsers = (
   projects: Project[],
   limit = 3,
 ): UpcomingIncidentWithUsers[] => {
+  const now = Date.now();
   return projects
     .flatMap((project) =>
       project.incidents.map((incident) => ({
@@ -70,11 +71,12 @@ export const getUpcomingIncidentsWithUsers = (
       })),
     )
     .filter(({ incident }) => incident.status === "active")
-    .sort(
-      (a, b) =>
-        new Date(a.incident.limitDate).getTime() -
-        new Date(b.incident.limitDate).getTime(),
-    )
+    .sort((a, b) => {
+      const aTime = new Date(a.incident.limitDate).getTime();
+      const bTime = new Date(b.incident.limitDate).getTime();
+
+      return Math.abs(aTime - now) - Math.abs(bTime - now);
+    })
     .slice(0, limit);
 };
 
